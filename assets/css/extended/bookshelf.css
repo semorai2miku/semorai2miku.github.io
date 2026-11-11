@@ -1,0 +1,470 @@
+.main:has(.bookshelf) {
+    max-width: 1184px;
+    padding-inline: 24px;
+}
+
+body:has(.bookshelf) .header-nav {
+    max-width: 1184px;
+    padding-inline: 24px;
+}
+
+.bookshelf {
+    --shelf-accent: #39c5bb;
+    --shelf-read: #17776f;
+    --shelf-gap: 24px;
+    color: var(--primary);
+    padding-top: 16px;
+    padding-bottom: 32px;
+}
+
+:root[data-theme="dark"] .bookshelf {
+    --shelf-read: var(--shelf-accent);
+}
+
+.bookshelf [hidden] {
+    display: none !important;
+}
+
+.bookshelf-header h1 {
+    margin: 16px 0 8px;
+    font-size: 32px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+.bookshelf-intro {
+    color: var(--secondary);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.bookshelf-controls {
+    margin-top: 28px;
+}
+
+.bookshelf-filters {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: var(--shelf-gap);
+}
+
+.bookshelf-field {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bookshelf-field label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.bookshelf-field input {
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--code-bg);
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 16px;
+    caret-color: var(--shelf-read);
+}
+
+.bookshelf-author-picker {
+    position: relative;
+}
+
+.bookshelf-field .bookshelf-author-input {
+    padding-right: 44px;
+}
+
+.bookshelf-author-trigger {
+    position: absolute;
+    inset: 0 0 auto auto;
+    display: grid;
+    width: 42px;
+    height: 44px;
+    place-items: center;
+    color: var(--primary);
+}
+
+.bookshelf-author-panel {
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + 8px);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: min(320px, calc(100vw - 32px));
+    max-height: var(--author-popup-height, 560px);
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--theme);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+}
+
+.bookshelf-author-panel.is-above {
+    top: auto;
+    bottom: calc(100% + 8px);
+}
+
+.bookshelf-author-panel > button,
+.bookshelf-author-pagination {
+    flex-shrink: 0;
+}
+
+.bookshelf-author-options {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bookshelf-author-option {
+    display: block;
+    width: 100%;
+    min-height: 36px;
+    padding: 7px 10px;
+    border-radius: 4px;
+    color: var(--primary);
+    text-align: left;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.bookshelf-author-option:hover,
+.bookshelf-author-option[aria-pressed="true"] {
+    background: var(--code-bg);
+}
+
+.bookshelf-author-option[aria-pressed="true"] {
+    font-weight: 600;
+}
+
+.bookshelf-author-empty {
+    padding: 16px 10px;
+    color: var(--secondary);
+    font-size: 14px;
+}
+
+.bookshelf-author-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-top: 4px;
+}
+
+.bookshelf-author-pagination button {
+    min-height: 36px;
+    flex: none;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 22px;
+    color: var(--primary);
+}
+
+.bookshelf-author-pagination button:hover:not(:disabled) {
+    background: var(--code-bg);
+}
+
+.bookshelf-author-pagination button:disabled {
+    color: var(--secondary);
+    cursor: default;
+}
+
+.bookshelf-author-pagination span {
+    color: var(--secondary);
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+.bookshelf-field input::placeholder {
+    color: var(--secondary);
+    opacity: 1;
+}
+
+.bookshelf-field .bookshelf-author-input::placeholder {
+    color: var(--primary);
+}
+
+.bookshelf :is(input, select, button):focus-visible {
+    outline: 2px solid var(--shelf-read);
+    outline-offset: 3px;
+}
+
+.bookshelf-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.bookshelf-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.bookshelf-status button,
+.bookshelf-reset,
+.bookshelf-empty button {
+    min-height: 44px;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--primary);
+    transition: background-color 140ms ease-out;
+}
+
+.bookshelf-status button[aria-pressed="true"] {
+    background: var(--code-bg);
+    font-weight: 600;
+}
+
+.bookshelf-status button:hover,
+.bookshelf-reset:hover,
+.bookshelf-empty button:hover {
+    background: var(--code-bg);
+}
+
+.bookshelf-status [data-bookshelf-count] {
+    padding-left: 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+.bookshelf-status button[aria-pressed="true"] [data-bookshelf-count] {
+    color: var(--shelf-read);
+}
+
+.bookshelf-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px 12px;
+    margin: 20px 0 24px;
+    scroll-margin-top: 16px;
+}
+
+.bookshelf-results,
+.bookshelf-pagination span {
+    color: var(--secondary);
+    font-size: 14px;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+}
+
+.bookshelf-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.bookshelf-grid + .bookshelf-pagination {
+    margin-top: 32px;
+}
+
+.bookshelf-pagination button {
+    min-height: 44px;
+    padding-inline: 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--primary);
+    font: inherit;
+    font-size: 14px;
+}
+
+.bookshelf-pagination button:hover:not(:disabled) {
+    background: var(--code-bg);
+}
+
+.bookshelf-pagination button:disabled {
+    color: var(--secondary);
+    cursor: default;
+}
+
+.bookshelf-grid {
+    /* Desktop: 5 equal covers + 4 x 24px gutters fill the 1136px canvas. */
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: var(--shelf-gap);
+    row-gap: 36px;
+    list-style: none;
+    padding: 0;
+    margin: 28px 0 0;
+}
+
+.bookshelf-controls:not([hidden]) + .bookshelf-grid {
+    margin-top: 0;
+}
+
+.bookshelf-book {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.bookshelf-cover {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background: var(--code-bg);
+}
+
+.bookshelf-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.bookshelf-missing {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    padding: 20px;
+    color: var(--secondary);
+    font-size: 14px;
+    text-align: center;
+}
+
+.bookshelf-book-title {
+    margin: 12px 0 4px;
+    font-size: 16px;
+    line-height: 1.55;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.bookshelf-book-author,
+.bookshelf-book-status {
+    color: var(--secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.bookshelf-book-status {
+    margin-top: 6px;
+}
+
+.bookshelf-book-status.is-read {
+    color: var(--shelf-read);
+}
+
+.bookshelf-empty {
+    padding: 56px 0;
+}
+
+.bookshelf-empty h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.bookshelf-empty p {
+    font-size: 16px;
+    color: var(--secondary);
+    margin-bottom: 16px;
+}
+
+.bookshelf-empty button {
+    background: var(--code-bg);
+}
+
+.bookshelf ::selection {
+    background: var(--shelf-accent);
+    color: #102421;
+}
+
+@media (max-width: 1000px) {
+    .bookshelf-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 800px) {
+    .bookshelf-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .bookshelf-author-option,
+    .bookshelf-author-pagination button {
+        min-height: 44px;
+    }
+
+    body:has(.bookshelf) .header-nav {
+        padding-inline: 16px;
+    }
+
+    .main:has(.bookshelf) {
+        padding: 16px;
+    }
+
+    .bookshelf {
+        --shelf-gap: 16px;
+        padding-top: 8px;
+    }
+
+    .bookshelf-header h1 {
+        margin-top: 12px;
+        font-size: 28px;
+    }
+
+    .bookshelf-intro {
+        font-size: 14px;
+    }
+
+    .bookshelf-controls {
+        margin-top: 20px;
+    }
+
+    .bookshelf-filters {
+        grid-template-columns: minmax(0, 1fr) 132px;
+        gap: 12px;
+    }
+
+    .bookshelf-toolbar {
+        margin-top: 12px;
+    }
+
+    .bookshelf-status button {
+        padding-inline: 10px;
+    }
+
+    .bookshelf-summary {
+        margin-top: 12px;
+        margin-bottom: 20px;
+    }
+
+    .bookshelf-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 28px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bookshelf button {
+        transition: none;
+    }
+}

@@ -37,6 +37,11 @@ enableRobotsTXT = true
   name = '目录'
   pageRef = '/catalogue'
   weight = 20
+  
+[[menus.main]]
+  name = '书架'
+  pageRef = '/posts/books'
+  weight = 25
 
 [[menus.main]]
   name = '搜索'
@@ -51,7 +56,6 @@ enableRobotsTXT = true
 [caches.images]
   dir = ':cacheDir/images'
 
-# 个人链接：同时用于页脚和“关于”页。
 [[params.personalLinks]]
   name = 'github'
   label = 'GitHub'
