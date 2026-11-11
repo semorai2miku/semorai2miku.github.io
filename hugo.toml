@@ -79,3 +79,9 @@ enableRobotsTXT = true
   label = 'Steam'
   detail = 'semorai2miku'
   url = 'https://steamcommunity.com/id/semorai2miku/'
+
+[params.assets]
+  favicon = '/icons/m/favicon.ico'
+  favicon16x16 = '/icons/m/favicon-16x16.png'
+  favicon32x32 = '/icons/m/favicon-32x32.png'
+  apple_touch_icon = '/icons/m/apple-touch-icon.png'
