@@ -1,0 +1,119 @@
+/* Reuse PaperMod's colors and SVG icons in both themes. */
+.main {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - 64px);
+}
+
+.personal-links {
+    display: flex;
+}
+
+.personal-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    border-radius: 8px;
+    color: var(--primary);
+    text-decoration: none;
+    transition: background-color 160ms ease-out, color 160ms ease-out;
+}
+
+.personal-link-icon {
+    display: inline-flex;
+    flex: 0 0 22px;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+}
+
+.personal-link-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.personal-link:hover {
+    background: var(--code-bg);
+}
+
+.personal-link--static {
+    cursor: default;
+}
+
+.personal-links .personal-link,
+.personal-links .personal-link-icon {
+    margin: 0;
+}
+
+.personal-link:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
+.personal-links--footer {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 var(--gap) 20px;
+}
+
+.personal-links--footer .personal-link {
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: var(--secondary);
+}
+
+.personal-links--footer .personal-link:hover,
+.personal-links--footer .personal-link:focus-visible {
+    color: var(--primary);
+}
+
+.personal-links--about {
+    flex-direction: column;
+    gap: 4px;
+    margin: 20px 0 8px;
+}
+
+.post-content .personal-links--about .personal-link {
+    min-height: 72px;
+    padding: 10px 14px;
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.personal-link-copy {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 2px;
+}
+
+.personal-link-name {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.personal-link-detail {
+    color: var(--secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.personal-link-description {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .personal-link {
+        transition: none;
+    }
+}

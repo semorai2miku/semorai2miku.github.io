@@ -1,0 +1,23 @@
+{{- $compact := .compact | default false -}}
+{{- with site.Params.personalLinks -}}
+<div class="personal-links {{ if $compact }}personal-links--footer{{ else }}personal-links--about{{ end }}">
+    {{- range . }}
+        {{- if .url }}
+        <a class="personal-link" href="{{ .url | safeURL }}" aria-label="{{ .label }}：{{ .detail }}"
+           title="{{ .label }}：{{ .detail }}" target="_blank" rel="noopener noreferrer me">
+        {{- else }}
+        <span class="personal-link personal-link--static" title="{{ .label }}：{{ .detail }}">
+        {{- end }}
+            <span class="personal-link-icon" aria-hidden="true">{{ partial "svg.html" . }}</span>
+            {{- if not $compact }}
+            <span class="personal-link-copy">
+                <span class="personal-link-name">{{ .label }}</span>
+                <span class="personal-link-detail">{{ .detail }}</span>
+            </span>
+            {{- else if not .url }}
+            <span class="personal-link-description">{{ .label }}：{{ .detail }}</span>
+            {{- end }}
+        {{- if .url }}</a>{{ else }}</span>{{ end }}
+    {{- end }}
+</div>
+{{- end -}}

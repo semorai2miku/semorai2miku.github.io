@@ -1,0 +1,81 @@
+baseURL = 'https://semorai2miku.github.io/'
+title = 'semorai blog'
+theme = 'PaperMod'
+locale = 'zh-CN'
+defaultContentLanguage = 'zh'
+timeZone = 'Asia/Shanghai'
+hasCJKLanguage = true
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
+[params]
+  env = 'production'
+  description = '写点什么...'
+  defaultTheme = 'auto'
+  ShowReadingTime = true
+  ShowCodeCopyButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowToc = true
+  TocOpen = false
+
+  [params.homeInfoParams]
+    Title = '垃圾桶'
+    Content = '写点什么...'
+
+[[menus.main]]
+  name = '文章'
+  pageRef = '/posts'
+  weight = 10
+
+[[menus.main]]
+  name = '目录'
+  pageRef = '/catalogue'
+  weight = 20
+
+[[menus.main]]
+  name = '搜索'
+  pageRef = '/search'
+  weight = 30
+
+[[menus.main]]
+  name = '关于'
+  pageRef = '/about'
+  weight = 40
+
+[caches.images]
+  dir = ':cacheDir/images'
+
+# 个人链接：同时用于页脚和“关于”页。
+[[params.personalLinks]]
+  name = 'github'
+  label = 'GitHub'
+  detail = '@semorai2miku'
+  url = 'https://github.com/semorai2miku'
+
+[[params.personalLinks]]
+  name = 'qq'
+  label = 'QQ'
+  detail = '2503691917'
+
+[[params.personalLinks]]
+  name = 'email'
+  label = '邮箱'
+  detail = '2503691917@qq.com'
+
+[[params.personalLinks]]
+  name = 'bilibili'
+  label = '哔哩哔哩'
+  detail = '个人空间'
+  url = 'https://space.bilibili.com/1497758558'
+
+[[params.personalLinks]]
+  name = 'steam'
+  label = 'Steam'
+  detail = 'semorai2miku'
+  url = 'https://steamcommunity.com/id/semorai2miku/'
